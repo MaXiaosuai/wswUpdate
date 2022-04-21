@@ -1,0 +1,10 @@
+repositories {
+    jcenter ()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile 'com.github.getActivity:XXPermissions:13.5'
+}

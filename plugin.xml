@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-wswUpdate" version="1.0.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>wswUpdate</name>
+    <js-module name="wswUpdate" src="www/wswUpdate.js">
+        <clobbers target="cordova.plugins.wswUpdate" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="wswUpdate">
+                <param name="ios-package" value="wswUpdate" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/wswUpdate.h" />
+        <source-file src="src/ios/wswUpdate.m" />
+    </platform>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="wswUpdate">
+                <param name="android-package" value="ma.xiaoshuai.cordova.wswUpdate.wswUpdate" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <framework src="src/android/wswUpdate.gradle" custom="true" type="gradleReference"/>
+        <source-file src="src/android/wswUpdate.java" target-dir="src/ma/xiaoshuai/cordova/wswUpdate" />
+    </platform>
+</plugin>

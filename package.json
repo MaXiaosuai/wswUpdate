@@ -1,0 +1,14 @@
+{
+  "name": "wswupdate",
+  "version": "1.0.0",
+  "description": "应用更新",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "应用更新"
+  ],
+  "author": "",
+  "license": "ISC"
+}
