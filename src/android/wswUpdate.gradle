@@ -1,10 +1,12 @@
 repositories {
-    jcenter ()
-    flatDir {
-        dirs 'libs'
-    }
+  jcenter()
 }
-
+allprojects {
+  repositories {
+    // JitPack 远程仓库：https://jitpack.io
+    maven { url 'https://jitpack.io' }
+  }
+}
 dependencies {
-    compile 'com.github.getActivity:XXPermissions:13.5'
+  implementation 'com.github.getActivity:XXPermissions:13.5'
 }

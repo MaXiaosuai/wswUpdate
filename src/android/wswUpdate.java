@@ -1,32 +1,49 @@
-package cordova-plugin-wswUpdate;
+package ma.xiaoshuai.cordova.wswUpdate;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
+import org.apache.cordova.CordovaArgs;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
  * This class echoes a string called from JavaScript.
  */
+
 public class wswUpdate extends CordovaPlugin {
+  protected static CallbackContext currentCallbackContext;
+  public static final String TAG = "Cordova.Plugin.wswUpdate";
+  public static final String ERROR_INVALID_PARAMETERS = "更新失败";
 
-    @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("coolMethod")) {
-            String message = args.getString(0);
-            this.coolMethod(message, callbackContext);
-            return true;
-        }
-        return false;
+  CallbackContext callbackContext;
+  @Override
+  public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
+    if (action.equals("wswUpdate")) {
+      return wswUpdate(args, callbackContext);
     }
 
-    private void coolMethod(String message, CallbackContext callbackContext) {
-        if (message != null && message.length() > 0) {
-            callbackContext.success(message);
-        } else {
-            callbackContext.error("Expected one non-empty string argument.");
-        }
+    return false;
+  }
+
+  @SuppressLint("wswUpdate")
+  protected boolean wswUpdate(CordovaArgs args, CallbackContext callbackContext) {
+    JSONObject params = null;
+    currentCallbackContext = callbackContext;
+    try {
+      params = args.getJSONObject(0);
+      String sign = params.getString("url");
+      Log.i(TAG, "aliLogin request has been sent successfully.");
+
+      return true;
+
+    } catch (JSONException e) {
+      e.printStackTrace();
+      callbackContext.error(ERROR_INVALID_PARAMETERS);
+      return  false;
     }
+  }
+
+
 }
