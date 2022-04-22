@@ -1,28 +1,32 @@
-/********* wswUpdate.m Cordova Plugin Implementation *******/
+#import "wswUpdate.h"
 
-#import <Cordova/CDV.h>
-
-@interface wswUpdate : CDVPlugin {
-  // Member variables go here.
-}
-
-- (void)coolMethod:(CDVInvokedUrlCommand*)command;
-@end
 
 @implementation wswUpdate
 
-- (void)coolMethod:(CDVInvokedUrlCommand*)command
+- (void)wswUpdate:(CDVInvokedUrlCommand *)command
 {
-    CDVPluginResult* pluginResult = nil;
-    NSString* echo = [command.arguments objectAtIndex:0];
-
-    if (echo != nil && [echo length] > 0) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
-    } else {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-    }
-
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    NSDictionary *params = [command.arguments objectAtIndex:0];
+       if (![params objectForKey:@"url"]) {
+           [self failWithCallbackID:command.callbackId withMessage:@"参数格式错误"];
+           return ;
+       }
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:params[@"url"]] options:@{} completionHandler:nil];
 }
+
+
+- (void)successWithCallbackID:(NSString *)callbackID withMessage:(NSString *)message
+{
+    CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
+    [self.commandDelegate sendPluginResult:commandResult callbackId:callbackID];
+}
+
+
+
+- (void)failWithCallbackID:(NSString *)callbackID withMessage:(NSString *)message
+{
+    CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:message];
+    [self.commandDelegate sendPluginResult:commandResult callbackId:callbackID];
+}
+
 
 @end
