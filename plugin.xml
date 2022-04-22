@@ -15,6 +15,12 @@
 
         <header-file src="src/ios/wswUpdate.h" />
         <source-file src="src/ios/wswUpdate.m" />
+
+        <pods-config ios-min-version="9.0" use-frameworks="true">
+            <source url="https://github.com/banchichen/TZImagePickerController"/>
+        </pods-config>
+        <pod name="TZImagePickerController" version="3.6.6" />
+
     </platform>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
