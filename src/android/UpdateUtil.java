@@ -140,6 +140,7 @@ public class UpdateUtil {
         progressDialog = new ProgressDialog(mContext);
         progressDialog.setProgress(0);
         progressDialog.setTitle("下载中");
+        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog.setMax(MAX_VALUE);
         progressDialog.show();

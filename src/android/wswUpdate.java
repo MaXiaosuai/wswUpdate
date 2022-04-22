@@ -52,10 +52,8 @@ public class wswUpdate extends CordovaPlugin {
         currentCallbackContext = callbackContext;
         try {
             params = args.getJSONObject(0);
-//            String url = params.getString("url");
-//            String packge = params.getString("packge");
-            String packgeName = "io.ionic.starter";
-            String url = "https://manquan-prod.oss-cn-beijing.aliyuncs.com/apk/app-release.apk";
+            String url = params.getString("url");
+            String packgeName = params.getString("packgeName");
             Log.i(TAG, "aliLogin request has been sent successfully.");
             if (XXPermissions.isGranted(cordova.getContext(), Permission.MANAGE_EXTERNAL_STORAGE)) {
                 UpdateUtil.downloadApk(url, cordova.getContext(),packgeName);
@@ -76,11 +74,9 @@ public class wswUpdate extends CordovaPlugin {
                             @Override
                             public void onDenied(List<String> permissions, boolean never) {
                                 if (never) {
-//                ToastUtils.show("被永久拒绝授权，请手动授予存储权限");
-                                    // 如果是被永久拒绝就跳转到应用权限系统设置页面
-//                XXPermissions.startPermissionActivity(SplashActivity.this, permissions);
+                                  currentCallbackContext.error("被永久拒绝授权，请手动授予存储权限");
                                 } else {
-//                ToastUtils.show("获取存储权限失败");
+                                  currentCallbackContext.error("获取存储权限失败");
                                 }
                             }
                         });
