@@ -22,8 +22,32 @@
                 <param name="android-package" value="ma.xiaoshuai.cordova.wswUpdate.wswUpdate" />
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+            <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+
+            <provider
+                android:name="ma.xiaoshuai.cordova.wswUpdate.MyFileProvider"
+                android:authorities="io.ionic.starter.MyFileProvider"
+                android:exported="false"
+                android:grantUriPermissions="true" >
+                <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths" />
+            </provider>
+
+        </config-file>
         <framework src="src/android/wswUpdate.gradle" custom="true" type="gradleReference"/>
         <source-file src="src/android/wswUpdate.java" target-dir="src/ma/xiaoshuai/cordova/wswUpdate" />
+        <source-file src="src/android/MyApplication.java" target-dir="src/ma/xiaoshuai/cordova/wswUpdate" />
+        <source-file src="src/android/MyFileProvider.java" target-dir="src/ma/xiaoshuai/cordova/wswUpdate" />
+        <source-file src="src/android/UpdateUtil.java" target-dir="src/ma/xiaoshuai/cordova/wswUpdate" />
+
+        <source-file src="src/android/file_paths.xml" target-dir="res/xml" />
+        <source-file src="src/android/file_paths.xml" target-dir="network_security_config/xml" />
+
     </platform>
 </plugin>
