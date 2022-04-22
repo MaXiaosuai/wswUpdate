@@ -28,17 +28,6 @@
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
             <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
             <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
-
-            <provider
-                android:name="ma.xiaoshuai.cordova.wswUpdate.MyFileProvider"
-                android:authorities="io.ionic.starter.MyFileProvider"
-                android:exported="false"
-                android:grantUriPermissions="true" >
-                <meta-data
-                    android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/file_paths" />
-            </provider>
-
         </config-file>
         <framework src="src/android/wswUpdate.gradle" custom="true" type="gradleReference"/>
         <source-file src="src/android/wswUpdate.java" target-dir="src/ma/xiaoshuai/cordova/wswUpdate" />
