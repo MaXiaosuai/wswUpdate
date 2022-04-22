@@ -15,6 +15,7 @@
 
         <header-file src="src/ios/wswUpdate.h" />
         <source-file src="src/ios/wswUpdate.m" />
+        <framework src="TZImagePickerController" type="podspec" spec="~> 3.6.6" />
 
     </platform>
     <platform name="android">
