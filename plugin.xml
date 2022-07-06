@@ -12,7 +12,7 @@
                 <param name="ios-package" value="wswUpdate" />
             </feature>
         </config-file>
-        <config-file target="*-Info.plist" parent="LCFBundleDevelopmentRegion">
+        <config-file target="*-Info.plist" parent="CFBundleDevelopmentRegion">
                 <string>china</string>
         </config-file>
 
