@@ -33,7 +33,7 @@ import com.lzy.okgo.request.base.Request;
 import java.io.File;
 import java.util.List;
 
-import io.ionic.starter.R;
+
 
 public class UpdateUtil {
     private static ProgressBar pb;
